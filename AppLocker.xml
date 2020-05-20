@@ -1,0 +1,31 @@
+<Subscription xmlns="http://schemas.microsoft.com/2006/03/windows/events/subscription">
+    <SubscriptionId>AppLocker</SubscriptionId>
+    <SubscriptionType>SourceInitiated</SubscriptionType>
+    <Description>Source Initiated AppLocker events</Description>
+    <Enabled>true</Enabled>
+    <Uri>http://schemas.microsoft.com/wbem/wsman/1/windows/EventLog</Uri>
+
+    <!-- Use Normal (default), Custom, MinLatency, MinBandwidth -->
+    <ConfigurationMode>MinLatency</ConfigurationMode>
+
+    <Query>
+        <![CDATA[
+            <QueryList>
+		<Query Id="0">
+		 <Select Path="Microsoft-Windows-AppLocker/EXE and DLL">*</Select>
+		 <Select Path="Microsoft-Windows-AppLocker/MSI and Script">*</Select>
+		 <Select Path="Microsoft-Windows-AppLocker/Packaged app-Deployment">*</Select>
+		 <Select Path="Microsoft-Windows-AppLocker/Packaged app-Execution">*</Select>
+		</Query>
+	    </QueryList>
+        ]]>
+    </Query>
+
+    <ReadExistingEvents>true</ReadExistingEvents>
+    <TransportName>http</TransportName>
+    <ContentFormat>RenderedText</ContentFormat>
+    <Locale Language="en-US"/>
+    <LogFile>ForwardedEvents</LogFile>
+    <AllowedSourceNonDomainComputers></AllowedSourceNonDomainComputers>
+    <AllowedSourceDomainComputers>O:NSG:NSD:(A;;GA;;;DC)</AllowedSourceDomainComputers>
+</Subscription>
