@@ -1,7 +1,7 @@
 ﻿#Requires -RunAsAdministrator
 <#
 *************************************************************************************************************************************
-Name:               CollectorServer
+Name:               Create-AppLockerEvtSubscription
 Author:             Kasper Johansen
 Website:            https://virtualwarlock.net
 Version             1.0
