@@ -49,6 +49,9 @@ wecutil qc /q:TRUE
                 Start-Process -Wait "netsh.exe" -ArgumentList "http add urlacl url=http://+:5985/wsman/ sddl=D:(A;;GX;;;S-1-5-80-569256582-2953403351-2909559716-1301513147-412116970)(A;;GX;;;S-1-5-80-4059739203-877974739-1245631912-527174227-2996563517)" -NoNewWindow
                 Start-Process -Wait "netsh.exe" -ArgumentList "http add urlacl url=https://+:5986/wsman/ sddl=D:(A;;GX;;;S-1-5-80-569256582-2953403351-2909559716-1301513147-412116970)(A;;GX;;;S-1-5-80-4059739203-877974739-1245631912-527174227-2996563517)" -NoNewWindow
         }
+            # Configure the maximum log size of the Forwarded Events log to 500MB
+            Write-Host "Configuring Forwarded Events Log size to 500MB" -ForegroundColor Cyan
+            wevtutil set-Log "ForwardedEvents" /ms:512000000
 
             # Restart Windows Remote Management and Windows Event Collector services
             Restart-Service -Name WinRM
